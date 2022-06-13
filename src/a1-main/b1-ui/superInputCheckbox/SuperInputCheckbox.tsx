@@ -1,6 +1,13 @@
 import React, {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes} from 'react';
+import s from './SuperInputCheckbox.module.css'
+
+
+
 type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 type SuperInputTextPropsType = DefaultInputPropsType
+
+
+
 const SuperInputCheckbox: React.FC<SuperInputTextPropsType> = ({onChange, ...restProps}) => {
 
     const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
@@ -14,6 +21,7 @@ const SuperInputCheckbox: React.FC<SuperInputTextPropsType> = ({onChange, ...res
             <input
             type={'checkbox'}
             onChange={onChangeCallback}
+            className={s.input}
             {...restProps}
             />
         </div>

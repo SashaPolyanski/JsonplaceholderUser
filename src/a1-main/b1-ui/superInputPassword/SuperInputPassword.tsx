@@ -6,7 +6,7 @@ type SuperInputPasswordPropsType = DefaultInputPropsType
 
 
 
-const SuperInputPassword:React.FC<SuperInputPasswordPropsType> = ({onChange,...restProps}) => {
+const SuperInputPassword:React.FC<SuperInputPasswordPropsType> = ({onChange,type,...restProps}) => {
     const [isShown, setIsShow] = useState<boolean>(false);
     const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
         onChange

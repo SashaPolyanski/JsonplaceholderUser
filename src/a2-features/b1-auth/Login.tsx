@@ -1,27 +1,40 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useFormik} from "formik";
-import * as yup from 'yup'
 import SuperInputPassword from "../../a1-main/b1-ui/superInputPassword/SuperInputPassword";
 import SuperInputText from "../../a1-main/b1-ui/superInputText/SuperInputText";
 import Button from '@mui/material/Button/Button';
 import s from './Login.module.css'
 import SuperInputCheckbox from "../../a1-main/b1-ui/superInputCheckbox/SuperInputCheckbox";
+import {useAppDispatch, useAppSelector} from "../../a1-main/b2-bll/store";
+import Error from "../../a1-main/b1-ui/error/Error";
+import {setError} from "../../a1-main/b2-bll/loginReducer";
+import {Navigate, useNavigate} from "react-router-dom";
+import {PATH} from "../../a1-main/b1-ui/routes/RoutesComponent";
 
 const Login = () => {
-    const validations = yup.object().shape({
-        email: yup.string().email('Invalid email address'),
-    })
+    const navigate = useNavigate()
+    const error = useAppSelector(state => state.auth.error)
+    const dispatch = useAppDispatch()
     const formik = useFormik({
-        initialValues: {
-            login: '',
-            password: '',
-            rememberMe: false
-        },
-        onSubmit: values => {
-            console.log(values)
-        },
-        validationSchema: validations
-    })
+            initialValues: {
+                login: '',
+                password: '',
+                rememberMe: false
+            },
+            onSubmit: values => {
+                values.login === 'Admin' && values.password === '12345' ? HandleFormSubmit(values.login, values.password) : dispatch(setError(true))
+            }
+        }
+    )
+
+    const HandleFormSubmit = (login: string, password: string) => {
+        const UserData = JSON.stringify({login, password})
+        localStorage.setItem('UserInfo', UserData)
+        localStorage.getItem('UserInfo') && navigate(PATH.PROFILE)
+    }
+
+
+
     return (
         <div className={s.loginWrapper}>
             <div className={s.loginContainer}>
@@ -45,22 +58,24 @@ const Login = () => {
                         type="password"
                         {...formik.getFieldProps('password')}/>
                 </div>
-                <div>
+                {error && <div><Error/></div>}
+                <div className={s.loginItem}>
 
                     <SuperInputCheckbox
                         id={'rememberMe'}
                         type="checkbox"
                         {...formik.getFieldProps('rememberMe')}/>
-                    <label>
+                    <label className={s.rememberMeText}>
                         Remember me
                     </label>
 
                 </div>
+
                 <Button variant={'contained'} className={s.btn} onClick={() => {
                     formik.handleSubmit()
                 }}>Login</Button>
             </div>
-            </div>
+        </div>
 
     );
 };

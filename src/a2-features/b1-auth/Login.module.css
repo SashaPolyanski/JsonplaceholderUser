@@ -1,13 +1,25 @@
 .loginWrapper {
     background-color: #02a7b7;
     height: calc(100vh - 45px);
+    text-align: left;
+    font-size: 25px;
+    color: wheat;
 
+}
+.rememberMeText {
+    margin-left: 20px;
+}
+.loginItem {
+    margin-top: 20px;
+    display: flex;
 }
 .loginContainer {
     width: 300px;
     padding: 100px;
     margin: 0 auto;
+
 }
+
 .btn {
     padding: 10px 60px;
     margin-top: 10px;

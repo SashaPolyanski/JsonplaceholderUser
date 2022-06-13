@@ -2,9 +2,11 @@ import {applyMiddleware, combineReducers, createStore} from "redux";
 import thunk, {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
 import {appReducer} from "./appReducer";
+import {authReducer} from "./loginReducer";
 
 const rootReducer = combineReducers({
-    app: appReducer
+    app: appReducer,
+    auth: authReducer
 })
 
 export const store = createStore(rootReducer, applyMiddleware(thunk))
