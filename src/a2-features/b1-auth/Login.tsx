@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {useFormik} from "formik";
 import SuperInputPassword from "../../a1-main/b1-ui/superInputPassword/SuperInputPassword";
 import SuperInputText from "../../a1-main/b1-ui/superInputText/SuperInputText";
@@ -7,14 +7,20 @@ import s from './Login.module.css'
 import SuperInputCheckbox from "../../a1-main/b1-ui/superInputCheckbox/SuperInputCheckbox";
 import {useAppDispatch, useAppSelector} from "../../a1-main/b2-bll/store";
 import Error from "../../a1-main/b1-ui/error/Error";
-import {setError} from "../../a1-main/b2-bll/loginReducer";
-import {Navigate, useNavigate} from "react-router-dom";
+import {setError, setIsLoggedIn} from "../../a1-main/b2-bll/loginReducer";
+import {useNavigate} from "react-router-dom";
 import {PATH} from "../../a1-main/b1-ui/routes/RoutesComponent";
+import {setLoadingApp} from "../../a1-main/b2-bll/appReducer";
+import Preloader from "../../a1-main/b1-ui/preloader/Preloader";
 
 const Login = () => {
-    const navigate = useNavigate()
+
+    const isLoading = useAppSelector(state => state.app.loadingApp)
     const error = useAppSelector(state => state.auth.error)
+    const navigate = useNavigate()
     const dispatch = useAppDispatch()
+
+
     const formik = useFormik({
             initialValues: {
                 login: '',
@@ -22,7 +28,12 @@ const Login = () => {
                 rememberMe: false
             },
             onSubmit: values => {
-                values.login === 'Admin' && values.password === '12345' ? HandleFormSubmit(values.login, values.password) : dispatch(setError(true))
+                dispatch(setLoadingApp(true))
+                setTimeout(() => {
+                    values.login === 'Admin' && values.password === '12345' ? HandleFormSubmit(values.login, values.password) : dispatch(setError(true))
+                    dispatch(setLoadingApp(false))
+                }, 2000)
+
             }
         }
     )
@@ -31,11 +42,13 @@ const Login = () => {
         const UserData = JSON.stringify({login, password})
         localStorage.setItem('UserInfo', UserData)
         localStorage.getItem('UserInfo') && navigate(PATH.PROFILE)
+        dispatch(setIsLoggedIn(true))
     }
-
-
-
+    if (isLoading) {
+        return <Preloader/>
+    }
     return (
+
         <div className={s.loginWrapper}>
             <div className={s.loginContainer}>
                 <div>

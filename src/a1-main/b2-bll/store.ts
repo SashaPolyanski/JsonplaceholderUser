@@ -3,10 +3,12 @@ import thunk, {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
 import {appReducer} from "./appReducer";
 import {authReducer} from "./loginReducer";
+import {friendsReducer} from "./friendsReducer";
 
 const rootReducer = combineReducers({
     app: appReducer,
-    auth: authReducer
+    auth: authReducer,
+    users: friendsReducer,
 })
 
 export const store = createStore(rootReducer, applyMiddleware(thunk))
