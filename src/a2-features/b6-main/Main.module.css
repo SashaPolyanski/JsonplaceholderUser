@@ -1,0 +1,15 @@
+.mainContainer {
+    background-image: url('/src/a3-assets/image/mainBgi.jpg');
+    background-size: cover;
+    height: calc(100vh - 45px);
+
+}
+.link {
+    display: inline-block;
+    margin-top: 13%;
+    padding: 15px 40px;
+    cursor: pointer;
+    color: antiquewhite;
+    border: solid 2px antiquewhite;
+    text-decoration: none;
+}
