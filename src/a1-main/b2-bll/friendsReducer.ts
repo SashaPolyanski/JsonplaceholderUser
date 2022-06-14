@@ -1,5 +1,6 @@
 import {Dispatch} from "redux";
 import {usersAPI, UsersType} from "../b3-dal/usersAPI";
+import {setLoadingApp, setLoadingAppType} from "./appReducer";
 
 const initialState: Array<UsersType> = []
 
@@ -19,10 +20,13 @@ export const setUsers = (data: Array<UsersType>) => ({type: "FRIENDS/SET-USERS",
 
 //---- Thunk
 export const FetchUsersThunk = () => (dispatch: Dispatch) => {
+    dispatch(setLoadingApp(true))
     usersAPI.getUsers()
         .then((res) => {
             dispatch(setUsers(res.data))
-            console.log(res.data)
+        })
+        .finally(()=>{
+            dispatch(setLoadingApp(false))
         })
 
 }
@@ -30,7 +34,4 @@ export const FetchUsersThunk = () => (dispatch: Dispatch) => {
 
 //---- Types
 export type InitialStateType = typeof initialState
-export type FriendsActionsType = ReturnType<typeof setUsers>
-
-// export type isInitializedAppType = ReturnType<typeof isInitializedApp>
-// export type setLoadingType = ReturnType<typeof setLoading>
+export type FriendsActionsType = ReturnType<typeof setUsers> | setLoadingAppType

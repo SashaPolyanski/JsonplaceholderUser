@@ -21,7 +21,7 @@ export const RoutesComponent = () => {
                 <Route path={PATH.LOGIN} element={<Login/>}/>
                 <Route path={PATH.NEWS} element={<News/>}/>
                 <Route path={PATH.FRIENDS} element={<Friends/>}/>
-                <Route path={PATH.PROFILE} element={<Profile/>}/>
+                <Route path={PATH.PROFILE + '/*'} element={<Profile/>}/>
             </Routes>
         </>
     );

@@ -41,7 +41,7 @@ const Login = () => {
     const HandleFormSubmit = (login: string, password: string) => {
         const UserData = JSON.stringify({login, password})
         localStorage.setItem('UserInfo', UserData)
-        localStorage.getItem('UserInfo') && navigate(PATH.PROFILE)
+        localStorage.getItem('UserInfo') && navigate(PATH.PROFILE + `/1`)
         dispatch(setIsLoggedIn(true))
     }
     if (isLoading) {

@@ -1,0 +1,6 @@
+.friendsContainer {
+    display: inline-grid;
+    grid-template-columns: 2fr 2fr 2fr;
+    column-gap: 50px;
+    margin-top: 5%;
+}

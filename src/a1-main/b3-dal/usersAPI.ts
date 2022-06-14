@@ -34,5 +34,11 @@ export const usersAPI = {
     getUsers() {
         return instance.get<Array<UsersType>>('users')
     },
+    getCurrentUser(userID: number) {
+        debugger
+
+        return instance.get(`users/${userID}`)
+            .then(res => res.data)
+    }
 
 }

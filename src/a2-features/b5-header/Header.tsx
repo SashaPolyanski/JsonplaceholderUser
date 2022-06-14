@@ -5,6 +5,7 @@ import {useNavigate} from "react-router-dom";
 import {PATH} from "../../a1-main/b1-ui/routes/RoutesComponent";
 import {useAppDispatch, useAppSelector} from "../../a1-main/b2-bll/store";
 import {setIsLoggedIn} from "../../a1-main/b2-bll/loginReducer";
+import SwipeableTemporaryDrawer from "../../a1-main/b1-ui/drawer/Drawer";
 
 const Header = () => {
     const isLoggedIn = useAppSelector(state => state.auth.isLogin)
@@ -23,6 +24,7 @@ const Header = () => {
 
     return (
         <header className={s.header}>
+            <SwipeableTemporaryDrawer/>
             <img
                 src="https://i.pinimg.com/originals/1a/ae/b9/1aaeb92db944020a324c1b1d5bdd1522.gif"
                 alt="#"/>
