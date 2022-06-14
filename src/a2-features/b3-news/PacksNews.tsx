@@ -4,6 +4,7 @@ import {useAppDispatch, useAppSelector} from "../../a1-main/b2-bll/store";
 import Preloader from "../../a1-main/b1-ui/preloader/Preloader";
 import News from "./c1-news/News";
 import {selectIsLoading, selectNews} from "../../a1-main/b2-bll/selectors";
+import {setIsLoggedIn} from "../../a1-main/b2-bll/loginReducer";
 
 const PacksNews = () => {
     const dispatch = useAppDispatch()
@@ -12,7 +13,12 @@ const PacksNews = () => {
 
 
     useEffect(() => dispatch(FetchPostsThunk()), [])
-
+    //auth.me ->
+    useEffect(()=>{
+        if(localStorage.getItem('UserInfo')){
+            dispatch(setIsLoggedIn(true))
+        }
+    },[])
     if (loading) return <Preloader/>
 
     return (
