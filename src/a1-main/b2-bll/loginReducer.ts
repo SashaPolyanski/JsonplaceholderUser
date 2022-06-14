@@ -23,13 +23,13 @@ export const authReducer = (state = initialState, action: LoginActionsType): Ini
 }
 
 
-// //---- Actions
+//---- Actions
 export const setError = (error: boolean) => ({type: 'LOGIN/SET-ERROR', payload:{error}} as const)
 export const setIsLoggedIn = (value: boolean) => ({type: 'LOGIN/SET-IS-LOGGED-IN', payload: {value}} as const)
 export const setUserID = (userID: number) => ({type: 'LOGIN/SET-USER-ID', payload: {userID}} as const)
 
 
-
+//---- Types
 type InitialStateType = typeof initialState
 export type LoginActionsType = ReturnType<typeof setError> | ReturnType<typeof setIsLoggedIn> | ReturnType<typeof setUserID>
 

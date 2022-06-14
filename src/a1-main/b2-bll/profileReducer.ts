@@ -23,7 +23,7 @@ export const setCurrentUser = (user: UsersType) => ({
     type: "PROFILE/SET-CURRENT-USER",
     payload: {user}
 } as const)
-export const setCurrentUserPosts = (posts: Array<PostsType>) => ({
+export const setCurrentUserPosts = (posts: PostsType[]) => ({
     type: "PROFILE/SET-CURRENT-USER-POSTS",
     payload: {posts}
 } as const)

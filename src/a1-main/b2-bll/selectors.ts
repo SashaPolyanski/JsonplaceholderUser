@@ -1,4 +1,4 @@
-import {AppRootStateType, useAppSelector} from "./store";
+import {AppRootStateType} from "./store";
 
 export const selectIsLoading = (state: AppRootStateType) => state.app.loadingApp
 export const selectError = (state: AppRootStateType) => state.auth.error
