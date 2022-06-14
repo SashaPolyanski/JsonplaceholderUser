@@ -7,7 +7,6 @@ type NewsType = {
     body: string
 }
 
-
 const News: React.FC<NewsType> = ({title,body}) => {
     return (
         <div className={s.newsContainer}>
@@ -16,7 +15,6 @@ const News: React.FC<NewsType> = ({title,body}) => {
                 <div className={s.title}>{title}</div>
                 <div className={s.body}>{body}</div>
             </div>
-
         </div>
     );
 };

@@ -12,17 +12,23 @@ import {useNavigate} from "react-router-dom";
 import {PATH} from "../../a1-main/b1-ui/routes/RoutesComponent";
 import {setLoadingApp} from "../../a1-main/b2-bll/appReducer";
 import Preloader from "../../a1-main/b1-ui/preloader/Preloader";
+import {selectError, selectIsLoading} from "../../a1-main/b2-bll/selectors";
+
+type FormikErrorType = {
+    email?: string
+}
 
 const Login = () => {
 
-    const isLoading = useAppSelector(state => state.app.loadingApp)
-    const error = useAppSelector(state => state.auth.error)
+    const isLoading = useAppSelector(selectIsLoading)
+    const error = useAppSelector(selectError)
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
 
 
     const formik = useFormik({
             initialValues: {
+                email: '',
                 login: '',
                 password: '',
                 rememberMe: true
@@ -31,9 +37,19 @@ const Login = () => {
                 dispatch(setLoadingApp(true))
                 setTimeout(() => {
                     values.login === 'Admin' && values.password === '12345' ? HandleFormSubmit(values.login, values.password) : dispatch(setError(true))
+                    formik.resetForm();
                     dispatch(setLoadingApp(false))
                 }, 2000)
 
+            },
+            validate: (values) => {
+                const errors: FormikErrorType = {};
+                if (!values.email) {
+                    errors.email = 'Required';
+                } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+                    errors.email = 'Invalid email address';
+                }
+                return errors
             }
         }
     )
@@ -51,10 +67,23 @@ const Login = () => {
 
         <div className={s.loginWrapper}>
             <div className={s.loginTitle}>Please use test login and password to continue</div>
+            <div className={s.loginData}>Email: Any valid email</div>
             <div className={s.loginData}>Login: Admin</div>
             <div className={s.loginData}>Password: 12345</div>
             <div className={s.loginContainer}>
                 <div>
+                    <label>
+                        Test email validation:
+                    </label>
+                    <SuperInputText
+                        id={'email'}
+                        type={'text'}
+                        {...formik.getFieldProps('email')}
+                    />
+                    {formik.touched.email && formik.errors.email &&
+                        <div className={s.error}>{formik.errors.email}</div>}
+                </div>
+                <div className={s.loginInputItem}>
                     <label>
                         Login:
                     </label>

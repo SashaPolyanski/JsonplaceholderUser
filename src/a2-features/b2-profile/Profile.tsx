@@ -7,13 +7,15 @@ import {FetchCurrentUserPostsThunk, FetchCurrentUserThunk} from "../../a1-main/b
 import Preloader from "../../a1-main/b1-ui/preloader/Preloader";
 import Login from "../b1-auth/Login";
 import UserPosts from "./c1-userPosts/UserPosts";
+import {selectCurrentUser, selectIsLoading, selectIsLogin, selectPostsUser} from "../../a1-main/b2-bll/selectors";
+import UserInfo from "./c2-userInfo/UserInfo";
 
 const Profile = () => {
     const dispatch = useAppDispatch()
-    const currentUser = useAppSelector(state => state.profile.user)
-    const postsUser = useAppSelector(state => state.profile.posts)
-    const login = useAppSelector(state => state.auth.isLogin)
-    const loading = useAppSelector(state => state.app.loadingApp)
+    const currentUser = useAppSelector(selectCurrentUser)
+    const postsUser = useAppSelector(selectPostsUser)
+    const login = useAppSelector(selectIsLogin)
+    const loading = useAppSelector(selectIsLoading)
     const params = useParams<'*'>()
     const token = params['*'] as string
 
@@ -22,9 +24,8 @@ const Profile = () => {
         dispatch(FetchCurrentUserPostsThunk(+token))
     }, [token])
 
-    if (!currentUser) return <Preloader/>
+    if (!currentUser || loading) return <Preloader/>
     if (!login) return <Login/>
-    if (loading) return <Preloader/>
 
     return (
         <div>
@@ -34,33 +35,15 @@ const Profile = () => {
                     <div className={s.userName}>{currentUser.username}</div>
                 </div>
                 <div>
-                    <div className={s.userItem}>
-                        <div className={s.userTitle}>Name:</div>
-                        <div className={s.userInfo}>{currentUser.name}</div>
-                    </div>
-                    <div className={s.userItem}>
-                        <div className={s.userTitle}>Email:</div>
-                        <div className={s.userInfo}>{currentUser.email}</div>
-                    </div>
-                    <div className={s.userItem}>
-                        <div className={s.userTitle}>Phone:</div>
-                        <div className={s.userInfo}>{currentUser.phone}</div>
-                    </div>
+                    <UserInfo title={'Name:'} name={currentUser.name}/>
+                    <UserInfo title={'Email:'} name={currentUser.email}/>
+                    <UserInfo title={'Phone:'} name={currentUser.phone}/>
                     <div className={s.userItem}>
                         <div className={s.userTitle}>My Web-Site:</div>
                         <a className={s.userInfo} href={currentUser.website}> {currentUser.website}</a></div>
-                    <div className={s.userItem}>
-                        <div className={s.userTitle}>City:</div>
-                        <div className={s.userInfo}>{currentUser.address.city}</div>
-                    </div>
-                    <div className={s.userItem}>
-                        <div className={s.userTitle}>Street:</div>
-                        <div className={s.userInfo}>{currentUser.address.street}</div>
-                    </div>
-                    <div className={s.userItem}>
-                        <div className={s.userTitle}>Company name:</div>
-                        <div className={s.userInfo}> {currentUser.company.name}</div>
-                    </div>
+                    <UserInfo title={'City:'} name={currentUser.address.city}/>
+                    <UserInfo title={'Street:'} name={currentUser.address.street}/>
+                    <UserInfo title={'Company name:'} name={currentUser.company.name}/>
                 </div>
             </div>
             <div className={s.postsTitleContainer}>

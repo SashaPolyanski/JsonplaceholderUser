@@ -4,7 +4,7 @@
 // import {setProfile, setProfileType} from "./profileReducer";
 
 const initialState = {
-    isLogin: false,
+    isLogin: true,
     error: false,
     userID: 1
 }

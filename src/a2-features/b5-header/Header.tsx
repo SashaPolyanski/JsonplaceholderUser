@@ -6,9 +6,10 @@ import {PATH} from "../../a1-main/b1-ui/routes/RoutesComponent";
 import {useAppDispatch, useAppSelector} from "../../a1-main/b2-bll/store";
 import {setIsLoggedIn} from "../../a1-main/b2-bll/loginReducer";
 import SwipeableTemporaryDrawer from "../../a1-main/b1-ui/drawer/Drawer";
+import {selectIsLogin} from "../../a1-main/b2-bll/selectors";
 
 const Header = () => {
-    const isLoggedIn = useAppSelector(state => state.auth.isLogin)
+    const isLoggedIn = useAppSelector(selectIsLogin)
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
     const logoutHandler = () => {
@@ -17,28 +18,24 @@ const Header = () => {
         dispatch(setIsLoggedIn(false))
 
     }
-    const loginHandler = () => {
-        navigate(PATH.LOGIN)
-    }
+    const loginHandler = () => navigate(PATH.LOGIN)
 
 
     return (
         <header>
             <div className={s.header}>
-            <img
-                src="https://i.pinimg.com/originals/1a/ae/b9/1aaeb92db944020a324c1b1d5bdd1522.gif"
-                alt="#"/>
-            {isLoggedIn ?
-                <Button variant={"contained"} className={s.btn} onClick={logoutHandler}>Выход</Button>
-                :
-                <Button variant={"contained"} className={s.btn} onClick={loginHandler}>Вход</Button>
-
-            }
+                <img
+                    src="https://i.pinimg.com/originals/1a/ae/b9/1aaeb92db944020a324c1b1d5bdd1522.gif"
+                    alt="#"/>
+                {isLoggedIn ?
+                    <Button variant={"contained"} className={s.btn} onClick={logoutHandler}>Выход</Button>
+                    :
+                    <Button variant={"contained"} className={s.btn} onClick={loginHandler}>Вход</Button>
+                }
             </div>
             <div className={s.menu}>
                 <SwipeableTemporaryDrawer/>
             </div>
-
         </header>
     );
 };

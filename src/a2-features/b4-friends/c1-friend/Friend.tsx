@@ -10,24 +10,20 @@ type FriendType = {
     userName: string
     userID: number
 }
-const Friend:React.FC<FriendType> = ({userName, userID}) => {
+const Friend: React.FC<FriendType> = ({userName, userID}) => {
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
+
     const redirectToCurrentUserHandler = () => {
         navigate(PATH.PROFILE + `/${userID}`)
         dispatch(setUserID(userID))
-
     }
 
-
-
     return (
-        <div>
-            <div className={s.usersContainer}>
-                <div>
-                    <img onClick={redirectToCurrentUserHandler} className={s.userAvatar} src={avatar}/>
-                    <div>{userName}</div>
-                </div>
+        <div className={s.usersContainer}>
+            <div>
+                <img onClick={redirectToCurrentUserHandler} className={s.userAvatar} src={avatar}/>
+                <div>{userName}</div>
             </div>
         </div>
     );

@@ -17,6 +17,6 @@ export const setLoadingApp = (status: boolean) => ({type: 'APP/SET-LOADING-APP',
 
 
 //---- Types
-export type InitialStateType = typeof initialState
 export type AppActionsType = setLoadingAppType
+export type InitialStateType = typeof initialState
 export type setLoadingAppType = ReturnType<typeof setLoadingApp>

@@ -1,5 +1,5 @@
 import {usersAPI, UsersType} from "../b3-dal/usersAPI";
-import {setLoadingApp, setLoadingAppType} from "./appReducer";
+import {setLoadingApp} from "./appReducer";
 import {AppThunkType} from "./store";
 import {postsAPI, PostsType} from "../b3-dal/postsAPI";
 
@@ -12,10 +12,8 @@ export const profileReducer = (state = initialState, action: ProfileActionsType)
 
     switch (action.type) {
         case "PROFILE/SET-CURRENT-USER":
-            return {...state, ...action.payload}
         case "PROFILE/SET-CURRENT-USER-POSTS":
-            console.log(action.payload.posts)
-            return {...state, posts: [...action.payload.posts]}
+            return {...state, ...action.payload}
         default:
             return state
     }
@@ -48,8 +46,7 @@ export const FetchCurrentUserPostsThunk = (userID: number): AppThunkType => asyn
         dispatch(setCurrentUserPosts(posts))
         console.log(posts)
     } catch (e) {
-    }
-    finally {
+    } finally {
         dispatch(setLoadingApp(false))
     }
 }
@@ -58,9 +55,6 @@ export const FetchCurrentUserPostsThunk = (userID: number): AppThunkType => asyn
 //---- Types
 export type InitialStateType = {
     user: UsersType | null
-    posts: Array<PostsType>
+    posts: PostsType[]
 }
-export type ProfileActionsType =
-    ReturnType<typeof setCurrentUser>
-    | setLoadingAppType
-    | ReturnType<typeof setCurrentUserPosts>
+export type ProfileActionsType = ReturnType<typeof setCurrentUser> | ReturnType<typeof setCurrentUserPosts>

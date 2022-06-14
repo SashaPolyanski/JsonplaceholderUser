@@ -1,14 +1,14 @@
 import {Dispatch} from "redux";
-import {setLoadingApp, setLoadingAppType} from "./appReducer";
+import {setLoadingApp} from "./appReducer";
 import {postsAPI, PostsType} from "../b3-dal/postsAPI";
 
-const initialState: Array<PostsType> = []
+const initialState: PostsType[] = []
 
 
 export const newsReducer = (state = initialState, action: NewsActionsType): InitialStateType => {
     switch (action.type) {
         case "NEWS/SET-POSTS": {
-           return action.payload.data.map(m=>({...m}))
+            return action.payload.data.map(m => ({...m}))
         }
         default:
             return state
@@ -25,11 +25,11 @@ export const FetchPostsThunk = () => (dispatch: Dispatch) => {
         .then((res) => {
             dispatch(setPosts(res.data))
         })
-        .finally(()=>{
+        .finally(() => {
             dispatch(setLoadingApp(false))
         })
 
 }
 //---- Types
 export type InitialStateType = typeof initialState
-export type NewsActionsType = ReturnType<typeof setPosts> | setLoadingAppType
+export type NewsActionsType = ReturnType<typeof setPosts>

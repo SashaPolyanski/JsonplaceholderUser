@@ -1,8 +1,6 @@
 import React from 'react';
 import s from "./UserPosts.module.css";
 
-
-
 type UserPostsType = {
     title: string
     body: string

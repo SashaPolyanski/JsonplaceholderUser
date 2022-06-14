@@ -28,14 +28,12 @@ export type UsersType = {
 }
 
 
-
-
 export const usersAPI = {
     getUsers() {
         return instance.get<Array<UsersType>>('users')
     },
     getCurrentUser(userID: number) {
-             return instance.get(`users/${userID}`)
+        return instance.get<UsersType>(`users/${userID}`)
             .then(res => res.data)
     }
 

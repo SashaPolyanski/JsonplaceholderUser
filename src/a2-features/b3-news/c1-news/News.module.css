@@ -3,19 +3,22 @@
     -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
     -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
     box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-width: 70%;
+    width: 70%;
     margin: 0 auto;
 }
+
 .newsItemsContainer {
 
     width: 1000px;
     margin-top: 20px;
     margin-left: 50px;
 }
+
 .title {
     color: antiquewhite;
     font-size: 40px;
 }
+
 .body {
     font-size: 25px;
     text-align: start;

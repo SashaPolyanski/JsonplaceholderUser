@@ -7,14 +7,12 @@ export type PostsType = {
     body: string
 }
 
-
 export const postsAPI = {
     getPosts() {
-        return instance.get<Array<PostsType>>('posts')
+        return instance.get<PostsType[]>('posts')
     },
     getCurrentUserPost(userID: number) {
-          return instance.get(`posts/?userId=${userID}`)
+        return instance.get(`posts/?userId=${userID}`)
             .then(res => res.data)
     }
-
 }
