@@ -44,7 +44,6 @@ export const FetchCurrentUserPostsThunk = (userID: number): AppThunkType => asyn
     try {
         const posts = await postsAPI.getCurrentUserPost(userID)
         dispatch(setCurrentUserPosts(posts))
-        console.log(posts)
     } catch (e) {
     } finally {
         dispatch(setLoadingApp(false))
