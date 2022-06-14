@@ -3,6 +3,7 @@
     text-align: left;
     font-size: 25px;
     color: wheat;
+    overflow: hidden;
 
 }
 .rememberMeText {
@@ -22,4 +23,13 @@
 .btn {
     padding: 10px 60px;
     margin-top: 10px;
+}
+.loginTitle {
+    font-size: 40px;
+    margin-left: 810px;
+    margin-top: 50px;
+    width: 450px;
+}
+.loginData {
+    margin-left: 810px;
 }

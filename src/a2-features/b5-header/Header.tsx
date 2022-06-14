@@ -23,18 +23,21 @@ const Header = () => {
 
 
     return (
-        <header className={s.header}>
-            <SwipeableTemporaryDrawer/>
+        <header>
+            <div className={s.header}>
             <img
                 src="https://i.pinimg.com/originals/1a/ae/b9/1aaeb92db944020a324c1b1d5bdd1522.gif"
                 alt="#"/>
             {isLoggedIn ?
-                <Button variant={"contained"} className={s.btn} onClick={logoutHandler}>Logout</Button>
+                <Button variant={"contained"} className={s.btn} onClick={logoutHandler}>Выход</Button>
                 :
-                <Button variant={"contained"} className={s.btn} onClick={loginHandler}>Login</Button>
+                <Button variant={"contained"} className={s.btn} onClick={loginHandler}>Вход</Button>
 
             }
-
+            </div>
+            <div className={s.menu}>
+                <SwipeableTemporaryDrawer/>
+            </div>
 
         </header>
     );

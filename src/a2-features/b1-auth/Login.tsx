@@ -25,7 +25,7 @@ const Login = () => {
             initialValues: {
                 login: '',
                 password: '',
-                rememberMe: false
+                rememberMe: true
             },
             onSubmit: values => {
                 dispatch(setLoadingApp(true))
@@ -50,6 +50,9 @@ const Login = () => {
     return (
 
         <div className={s.loginWrapper}>
+            <div className={s.loginTitle}>Please use test login and password to continue</div>
+            <div className={s.loginData}>Login: Admin</div>
+            <div className={s.loginData}>Password: 12345</div>
             <div className={s.loginContainer}>
                 <div>
                     <label>

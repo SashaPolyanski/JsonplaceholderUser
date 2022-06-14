@@ -4,13 +4,14 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import s from './Drawer.module.css'
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import {PATH} from "../routes/RoutesComponent";
 import {useAppSelector} from "../../b2-bll/store";
 
 
 export default function SwipeableTemporaryDrawer() {
-
+    const navigate = useNavigate()
+    const userID = useAppSelector(state=>state.auth.userID)
     const isLogged = useAppSelector(state => state.auth.isLogin)
     const [state, setState] = React.useState(false);
     const closeDrawer = () => setState(false)
@@ -49,7 +50,7 @@ export default function SwipeableTemporaryDrawer() {
                 <NavLink onClick={closeDrawer} className={s.link} to={'/'}>Home</NavLink>
                 {isLogged && <div>
                     <div className={s.link}>
-                        <NavLink onClick={closeDrawer} className={s.link} to={PATH.PROFILE}>Profile</NavLink>
+                        <NavLink onClick={closeDrawer} className={s.link} to={PATH.PROFILE + `/${userID}`}>Profile</NavLink>
                     </div>
                     <div className={s.link}>
                         <NavLink onClick={closeDrawer} className={s.link} to={PATH.FRIENDS}>Friends</NavLink>

@@ -1,3 +1,40 @@
 .userAvatar {
-    width: 200px;
+    width: 300px;
+}
+
+.userInfoContainer {
+    display: flex;
+    margin: 50px 50px 50px 550px;
+}
+
+
+.postsTitleContainer {
+    font-size: 40px;
+    display: flex;
+    justify-content: space-between;
+    width: 1200px;
+    margin: 0 auto;
+}
+.userItem {
+    display: flex;
+    margin-top: 8px;
+    margin-left: 50px;
+}
+.userTitle {
+    font-size: 25px;
+}
+.userInfo {
+    font-size: 25px;
+    margin-left: 20px;
+}
+.userName {
+    font-size: 30px;
+    margin-top: 20px;
+}
+.postsTitle {
+    margin-left: 80px;
+    margin-bottom: 20px;
+}
+.postsPost {
+    margin-right: 400px;
 }

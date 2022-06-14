@@ -1,0 +1,21 @@
+.postTitle {
+    padding: 20px;
+    font-size: 30px;
+    width: 400px;
+    text-align: start;
+}
+.postText {
+    width: 800px;
+    padding: 20px;
+    font-size: 20px;
+    text-align: start;
+
+}
+.postsContainer {
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid antiquewhite;
+    margin: 0 auto;
+    font-size: 20px;
+}

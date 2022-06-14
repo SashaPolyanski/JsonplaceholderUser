@@ -6,6 +6,7 @@
 const initialState = {
     isLogin: false,
     error: false,
+    userID: 1
 }
 
 
@@ -25,40 +26,12 @@ export const authReducer = (state = initialState, action: LoginActionsType): Ini
 // //---- Actions
 export const setError = (error: boolean) => ({type: 'LOGIN/SET-ERROR', payload:{error}} as const)
 export const setIsLoggedIn = (value: boolean) => ({type: 'LOGIN/SET-IS-LOGGED-IN', payload: {value}} as const)
+export const setUserID = (userID: number) => ({type: 'LOGIN/SET-USER-ID', payload: {userID}} as const)
 
 
-// //---- Thunks
-// export const loginThunk = (data: LoginParamsType) => (dispatch: Dispatch<LoginActionsType>) => {
-//     dispatch(setStatusLoadingApp(true))
-//     api.login(data)
-//         .then((res) => {
-//             dispatch(setIsLoggedIn(true))
-//             dispatch(setProfile(res.data))
-//             dispatch(setUserId(res.data._id))
-//         })
-//         .catch((err) => {
-//             dispatch(setError(err.response.data.error))
-//         })
-//         .finally(() => {
-//             dispatch(setStatusLoadingApp(false))
-//         })
-// }
-// export const logoutThunk = () => (dispatch: Dispatch<LoginActionsType>) => {
-//     dispatch(setStatusLoadingApp(true))
-//     api.logout()
-//         .then(() => {
-//             dispatch(setIsLoggedIn(false))
-//         })
-//         .finally(() => {
-//             dispatch(setStatusLoadingApp(false))
-//         })
-//
-// }
-//
-//
-// //---- Types
+
 type InitialStateType = typeof initialState
-export type LoginActionsType = ReturnType<typeof setError> | ReturnType<typeof setIsLoggedIn>
+export type LoginActionsType = ReturnType<typeof setError> | ReturnType<typeof setIsLoggedIn> | ReturnType<typeof setUserID>
 
 
 

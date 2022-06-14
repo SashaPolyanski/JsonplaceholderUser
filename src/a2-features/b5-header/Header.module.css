@@ -13,5 +13,9 @@
 
 .btn {
     height: 30px;
-    margin-right: 30px;
+}
+.menu {
+    position: absolute;
+    top: 52px;
+    left: 20px;
 }
