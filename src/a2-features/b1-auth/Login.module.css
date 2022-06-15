@@ -50,5 +50,27 @@
         margin: 0 auto;
         width: 300px;
         padding-left: 90px;
+
     }
+
+    .loginContainer {
+        width: 300px;
+        margin: 0 auto;
+    }
+
+
+}
+
+@media screen and (max-width: 400px) {
+    .loginTitle {
+        position: absolute;
+        left: -100%;
+    }
+
+    .loginContainer {
+        width: 300px;
+        margin: 0 auto;
+    }
+
+
 }
