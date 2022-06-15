@@ -5,7 +5,6 @@ import defaultAvatar from '../../a3-assets/image/defaultAvatar.png'
 import s from './Profile.module.css'
 import {FetchCurrentUserPostsThunk, FetchCurrentUserThunk} from "../../a1-main/b2-bll/profileReducer";
 import Preloader from "../../a1-main/b1-ui/preloader/Preloader";
-import Login from "../b1-auth/Login";
 import UserPosts from "./c1-userPosts/UserPosts";
 import {selectCurrentUser, selectIsLoading, selectIsLogin, selectPostsUser} from "../../a1-main/b2-bll/selectors";
 import UserInfo from "./c2-userInfo/UserInfo";
