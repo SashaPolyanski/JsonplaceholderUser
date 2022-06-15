@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/testForNinjaDev/static/css/main.4302b318.css",
+    "main.css": "/testForNinjaDev/static/css/main.138da073.css",
     "main.js": "/testForNinjaDev/static/js/main.a1cbc473.js",
     "static/js/787.91c002ad.chunk.js": "/testForNinjaDev/static/js/787.91c002ad.chunk.js",
     "static/media/mainBgi.jpg": "/testForNinjaDev/static/media/mainBgi.f1ccbd00c351be451307.jpg",
@@ -8,12 +8,12 @@
     "index.html": "/testForNinjaDev/index.html",
     "static/media/no-view.svg": "/testForNinjaDev/static/media/no-view.ef3570e6475960ea172b.svg",
     "static/media/view.svg": "/testForNinjaDev/static/media/view.bc05a0cb437d19c6e4d9.svg",
-    "main.4302b318.css.map": "/testForNinjaDev/static/css/main.4302b318.css.map",
+    "main.138da073.css.map": "/testForNinjaDev/static/css/main.138da073.css.map",
     "main.a1cbc473.js.map": "/testForNinjaDev/static/js/main.a1cbc473.js.map",
     "787.91c002ad.chunk.js.map": "/testForNinjaDev/static/js/787.91c002ad.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4302b318.css",
+    "static/css/main.138da073.css",
     "static/js/main.a1cbc473.js"
   ]
 }
