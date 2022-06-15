@@ -14,8 +14,17 @@
 .btn {
     height: 30px;
 }
+
 .menu {
     position: absolute;
     top: 52px;
     left: 20px;
+}
+
+.btnLogout {
+    right: 17px;
+}
+
+.btnLogin {
+    right: 17px;
 }

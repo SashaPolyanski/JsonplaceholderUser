@@ -44,16 +44,25 @@
         display: flex;
         margin: 50px 50px 50px 400px;
     }
-    .collapse {
-        margin: 0 20%;
-    }
 }
 @media screen and (max-width: 1280px) {
     .userInfoContainer {
         display: flex;
         margin: 50px 50px 50px 300px;
     }
-    .collapse {
-        margin: 0 20%;
+}
+@media screen and (max-width: 960px) {
+    .userInfoContainer {
+        display: flex;
+        margin: 50px 50px 50px 200px;
+    }
+    .userTitle {
+        font-size: 20px;
+    }
+    .userInfo {
+        font-size: 20px;
+    }
+    .userAvatar {
+        width: 200px;
     }
 }

@@ -28,9 +28,9 @@ const Header = () => {
                     src="https://i.pinimg.com/originals/1a/ae/b9/1aaeb92db944020a324c1b1d5bdd1522.gif"
                     alt="#"/>
                 {isLoggedIn ?
-                    <Button variant={"contained"} className={s.btn} onClick={logoutHandler}>Выход</Button>
+                    <Button variant={"contained"} className={s.btnLogout} onClick={logoutHandler}>Выход</Button>
                     :
-                    <Button variant={"contained"} className={s.btn} onClick={loginHandler}>Вход</Button>
+                    <Button variant={"contained"} className={s.btnLogin} onClick={loginHandler}>Вход</Button>
                 }
             </div>
             <div className={s.menu}>

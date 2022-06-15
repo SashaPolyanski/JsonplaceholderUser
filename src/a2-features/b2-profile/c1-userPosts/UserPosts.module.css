@@ -19,3 +19,13 @@
     margin: 0 auto;
     font-size: 20px;
 }
+
+
+@media screen and (max-width: 960px) {
+    .postText {
+        font-size: 20px;
+    }
+    .postTitle {
+        font-size: 25px;
+    }
+}
