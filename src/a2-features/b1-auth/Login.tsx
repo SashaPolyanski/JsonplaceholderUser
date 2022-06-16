@@ -12,18 +12,21 @@ import {useNavigate} from "react-router-dom";
 import {PATH} from "../../a1-main/b1-ui/routes/RoutesComponent";
 import {setLoadingApp} from "../../a1-main/b2-bll/appReducer";
 import Preloader from "../../a1-main/b1-ui/preloader/Preloader";
-import {selectError, selectIsLoading} from "../../a1-main/b2-bll/selectors";
+import {selectError, selectIsLoading, selectIsLogin, SelectUserID} from "../../a1-main/b2-bll/selectors";
 
 type FormikErrorType = {
     email?: string
 }
 
 const Login = () => {
-
+    debugger
     const isLoading = useAppSelector(selectIsLoading)
+    const login = useAppSelector(selectIsLogin)
+    const userID = useAppSelector(SelectUserID)
     const error = useAppSelector(selectError)
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
+
 
 
     const formik = useFormik({
@@ -56,13 +59,16 @@ const Login = () => {
 
     const HandleFormSubmit = (login: string, password: string) => {
         const UserData = JSON.stringify({login, password})
-        localStorage.setItem('UserInfo', UserData)
-        localStorage.getItem('UserInfo') && navigate(PATH.PROFILE + `/1`)
         dispatch(setIsLoggedIn(true))
-    }
+        localStorage.setItem('UserInfo', UserData)
+         }
+    if(login) navigate(PATH.PROFILE + `/${userID}`)
     if (isLoading) {
         return <Preloader/>
     }
+
+
+
     return (
 
         <div className={s.loginWrapper}>

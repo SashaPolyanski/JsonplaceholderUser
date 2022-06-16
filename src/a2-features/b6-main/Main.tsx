@@ -11,11 +11,13 @@ const Main = () => {
     const loggedIn = useAppSelector(selectIsLogin)
     const userID = useAppSelector(SelectUserID)
     //auth.me ->
+    debugger
     useEffect(()=>{
         if(localStorage.getItem('UserInfo')){
             dispatch(setIsLoggedIn(true))
         }
     },[])
+
     return (
         <div className={s.mainContainer}>
             {loggedIn ? <NavLink to={PATH.PROFILE + `/${userID}`} className={s.link}>click here to continue</NavLink> :

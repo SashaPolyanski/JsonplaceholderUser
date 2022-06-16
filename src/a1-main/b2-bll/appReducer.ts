@@ -7,6 +7,7 @@ export const appReducer = (state = initialState, action: AppActionsType): Initia
     switch (action.type) {
         case "APP/SET-LOADING-APP":
         return {...state, loadingApp: action.payload.status}
+
         default:
             return state
     }
@@ -14,6 +15,8 @@ export const appReducer = (state = initialState, action: AppActionsType): Initia
 
 //---- Actions
 export const setLoadingApp = (status: boolean) => ({type: 'APP/SET-LOADING-APP', payload: {status}} as const)
+
+ //----Thunk
 
 
 //---- Types
