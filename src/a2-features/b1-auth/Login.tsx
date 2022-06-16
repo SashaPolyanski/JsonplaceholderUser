@@ -63,9 +63,7 @@ const Login = () => {
         localStorage.setItem('UserInfo', UserData)
          }
     if(login) navigate(PATH.PROFILE + `/${userID}`)
-    if (isLoading) {
-        return <Preloader/>
-    }
+    if (isLoading) return <Preloader/>
 
 
 
