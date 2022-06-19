@@ -1,46 +1,67 @@
-# Getting Started with Create React App
+Тестовое задание
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Задача:
+Реализовать приложение, которое умеет показывать следующие страницы:
 
-In the project directory, you can run:
+/ - главная страница (страница на которой будет выведена любая информация (текст и картинка)
+/login — страница регистрации, ввода логина и пароля
+/news - страница с новостями (любая однотипная информация полученная с API).
+/profile - страница с выводом информации о выбранном пользователе (переход по нажатию на любого пользователя).
+/frends - страница на которой будут отображаться данные всех юзеров пришедшие по API.
+На сайте, в шапке реализовать функционал:
 
-### `yarn start`
+Слева: логотип;
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Справа: Вход / Выход: (при нажатии на «Вход» - перекидывает на страницу (/login), «Выход» - происходит разлогинивание и переход на страницу (/);
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+На сайте, в боковом меню реализовать ссылки:
 
-### `yarn test`
+На главную (/);
+Профиль (/profile) - отображается только при логине;
+Друзья (/frends) - отображается только при логине;
+Новости (/news);
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Если пользователь кликает на страницу “профиля” или “друзья” и он не “авторизован” - перекидывать на страницу /login/.
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Форма входа (/login) принимает “фейковые” данные:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+username: Admin
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+password: 12345
 
-### `yarn eject`
+Если введены другие данные, то показывается сообщения:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Имя пользователя или пароль введены не верно
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Если введены корректные данные, то перебрасывать на страницу (/profile) — где отображать пользователя (id=1)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Информацию об авторизации пользователя можно хранить в localStorage (обычные поля user, password). Базу данных реализовать не нужно.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Все необходимое на ваш взгляд, прокинуть через Redux.
 
-## Learn More
+При клике по любому юзеру на странице (/frends), должен будет произойти переход на страницу (/profile) с отображением данных выбранного юзера, а также его постов.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Оформление (дизайн) — не важно. Сделайте, чтобы можно было комфортно смотреть пример в браузере и на мобильных устройствах.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
+Требования:
+Для асинхронных запросов использовать redux-thunk, или любой другой подход.
+Использовать редьюсеры и экшены, как того требует redux.
+При переходе на страницу пока пока она грузиться (подгружает данные) — показывать прелоадер.
+Пока запрос на логине «в процессе», блокировать повторные запросы (самый легкий способ, это блокировать нажатия кнопки входа + сделать disabled кнопку отправки формы). Разумеется, чтобы пользователю было понятнее, текст disabled кнопки можно сделать: «Проверяю…» либо прелоадер как на профиле/новостях.
+В форме показывать ошибку + стандартную валидацию email (по типу инпута, либо по регулярному выражению).
+Разместить проект на GitHub pages
+https://www.c-sharpcorner.com/article/how-to-deploy-react-application-on-github-pages/
+
+
+API:
+
+https://jsonplaceholder.typicode.com/users — подгрузка всех юзеров;
+
+https://jsonplaceholder.typicode.com/users/id — подгрузка конкретного юзера по id;
+
+https://jsonplaceholder.typicode.com/posts -  подгрузка всех постов; (также используется для вывода новостей (поля title, body));
+
+https://jsonplaceholder.typicode.com/posts?userId=id - подгрузка постов у конкретного юзера;
